@@ -2,10 +2,11 @@ cmake_minimum_required(VERSION 4.2)
 
 
 set(CMAKE_C_STANDARD 23)
+set(CMAKE_Fortran_COMPILER "C:/mingw64/bin/gfortran.exe")
 
-project(rtkconv LANGUAGES C)
+project(RTKLIB LANGUAGES C Fortran)
 
-add_executable(rinex
+add_executable(RTKLIB
        main.c
         src/rtkcmn.c
         src/rinex.c
@@ -32,8 +33,9 @@ add_executable(rinex
         src/rcv/rt17.c
         src/rcv/septentrio.c)
 
-include_directories(src src/rcv lib/iers/src)
-link_libraries(lib/openblas/libopenblas.lib)
+
+include_directories(src src/rcv lib/iers/src_c)
+link_libraries(lib/openblas/libopenblas.a)
 link_directories(lib/iers lib/omf lib/openblas)
 
 
